@@ -68,6 +68,10 @@ li {
 	padding:10%;
 }
 
+input {
+	width:110px;
+}
+
 /* ********** BUTTON ********** */
 
 button {
