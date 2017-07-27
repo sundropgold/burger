@@ -21,39 +21,30 @@ router.get("/", function(req,res){
 
 // route to post/add a burger
 router.post("/", function(req,res){
+
+	var date = new Date();
+
 	burger.insertOne([
 		// columns
-		"name"
+		"burger_name", "devoured", "date"
 		], [
 		// values
-		req.body.name
+		req.body.burger, req.body.devoured, date
 		], function() {
 			res.redirect("/");
 		});
 });
 
-// route to update a burger
+// route to devour a burger by updating its devoured category to true
 router.put("/:id", function(req,res){
 	// the condition = id where to update the burger
 	var condition = "id = " + req.params.id;
 
 	burger.updateOne({
-		name: req.body.name
+		devoured: req.body.burger
 	}, condition, function(){
 		res.redirect("/");
 	});
-});
-
-// route to devour a burger
-router.put("/:id", function(req,res){
-
-	// update the burger status devoured to true
-	connection.query("UPDATE burgers SET devoured = true WHERE id = ?", req.params.id, function(err, result){
-		if(err) throw err;
-
-		res.redirect("/");
-	});
-
 });
 
 module.exports = router;
