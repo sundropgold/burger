@@ -11,7 +11,7 @@ function printQuestionMarks(num) {
 
 	var arr = [];
 
-	for (var i = 0; i < num.length; i++) {
+	for (var i = 0; i < num; i++) {
 		arr.push("?");
 	}
 
@@ -62,7 +62,7 @@ var orm = {
 		// function to insert data into table
 
 		var queryString = "INSERT INTO " + table;
-		queryString += "(" + columns.toString();
+		queryString += " (" + columns.toString();
 		queryString += ") VALUES (" + printQuestionMarks(values.length) + ")"; 
 
 		connection.query(queryString, values, function(err, result){
